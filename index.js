@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 let previousFavoriteCount = 0;
 let newFavoriteCount = 0;
 
-const getLikeCount = async () => {
+const getRecentTweets = async () => {
   let response;
   try {
     response = await twitterClient.tweets.search({
@@ -71,17 +71,19 @@ const getLikeCount = async () => {
     console.log(err);
   }
 
-  const recentTweets = response.statuses;
+  return response.statuses;
+};
+
+const getLikeCount = async () => {
+  const tweets = await getRecentTweets();
+
   // console.log(recentTweets);
   console.log('newFavoriteCount: ', newFavoriteCount);
 
-  const tweet = recentTweets.find(x => x.id === 1450787932785291300);
+  const tweet = tweets.find(x => x.id === 1450787932785291300);
   console.log('tweet favorite count test: ', tweet.favorite_count);
 
-  newFavoriteCount = recentTweets.reduce(
-    (acc, curr) => acc + curr.favorite_count,
-    0
-  );
+  newFavoriteCount = tweets.reduce((acc, curr) => acc + curr.favorite_count, 0);
 
   console.log('previousFavoriteCount: ', previousFavoriteCount);
   console.log('newFavoriteCount: ', newFavoriteCount);
