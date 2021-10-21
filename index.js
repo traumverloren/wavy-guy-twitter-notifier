@@ -81,7 +81,6 @@ const getLikeCount = async () => {
   console.log('newFavoriteCount: ', newFavoriteCount);
 
   if (previousFavoriteCount !== 0 && previousFavoriteCount < newFavoriteCount) {
-    console.log('!!!! publish wavy-gravy event !!!');
     aedes.publish({ topic: 'wavy-gravy', payload: 'new like'});
   }
 
@@ -90,4 +89,4 @@ const getLikeCount = async () => {
 
 // start everything
 getLikeCount();
-setInterval(() => getLikeCount(), 6000);
+setInterval(() => getLikeCount(), 3000);
