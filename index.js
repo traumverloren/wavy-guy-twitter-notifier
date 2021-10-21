@@ -9,14 +9,7 @@ const ws = require("websocket-stream");
 const mqttPort = 1883;
 const appPort = 8080;
 
-const client = require('twitter-api-client');
-
-const twitterClient = new client.TwitterClient({
-  apiKey: process.env.CONSUMER_KEY,
-  apiSecret: process.env.CONSUMER_SECRET,
-  accessToken: process.env.ACCESS_TOKEN,
-  accessTokenSecret: process.env.ACCESS_SECRET,
-});
+const Twitter = require('twitter-lite');
 
 mqtt.listen(mqttPort, function() {
   console.log("mqtt server listening on port", mqttPort);
@@ -57,15 +50,20 @@ app.get("/", (req, res) => {
   res.send('server is working!');
 });
 
+const twitterClient = new Twitter({
+  bearer_token: process.env.BEARER_TOKEN,
+});
+
 let previousFavoriteCount = 0;
 let newFavoriteCount = 0;
 
 const getRecentTweets = async () => {
   let response;
   try {
-    response = await twitterClient.tweets.search({
+    response = await twitterClient.get('search/tweets', {
       q: 'from:stephaniecodes',
       result_type: 'recent',
+      count: 100,
     });
   } catch (err) {
     console.log(err);
@@ -76,12 +74,6 @@ const getRecentTweets = async () => {
 
 const getLikeCount = async () => {
   const tweets = await getRecentTweets();
-
-  // console.log(recentTweets);
-  console.log('newFavoriteCount: ', newFavoriteCount);
-
-  const tweet = tweets.find(x => x.id === 1450787932785291300);
-  console.log('tweet favorite count test: ', tweet.favorite_count);
 
   newFavoriteCount = tweets.reduce((acc, curr) => acc + curr.favorite_count, 0);
 
