@@ -30,7 +30,7 @@ https://user-images.githubusercontent.com/9959680/138499286-12a5aaae-bce1-4797-a
 
 ![wavy-guy-huzzah](https://user-images.githubusercontent.com/9959680/138496337-ffde8cdf-fbd3-4d50-8150-1eb3c2a0361a.png)
 
-I have a raspberry pi 4 running a small node.js app. I use `pm2` to run this on the pi: `node index.js`. This file (`index.js`) creates a small local express server to create a MQTT Broker (using [Aedes](https://github.com/moscajs/aedes)) and sends a request to the twitter API using my Bearer token as authentication (so I can poll up to 450 every 15 minutes) every 3 seconds to grab my most recent 100 tweets from the past 7 days. 
+I have a raspberry pi 4 running a small node.js app. I use `pm2` to run this on the pi: `node index.js`. This file (`index.js`) creates a small local express server to create a MQTT Broker (using [Aedes](https://github.com/moscajs/aedes)) and sends a request to the twitter API using my Bearer token as authentication (so I can poll up to 450 times every 15 minutes) every 3 seconds to grab my most recent 100 tweets from the past 7 days. 
 
 This specific criteria is due to limitations of the [twitter API](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets) and what data I can retrieve using the API... I can't retrieve my total like count as a user directly) and calculate the total number of likes on them.
 
