@@ -1,6 +1,6 @@
 # Wavy Tube Guy Tweet Likes Notifier
 
-Whenever I get a like on a tweet of mine that is < 7 days old, I get treated to a notification from wavy tube guy. It's a delight. 
+Whenever I get a like on a tweet of mine that is < 7 days old, I get treated to a notification from wavy tube guy. It's a delight. ✨
 
 Watch in real-time on [twitch](https://twitch.tv/stephaniecodes) to see your like trigger wavy guy! 
 
