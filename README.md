@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/9959680/138499286-12a5aaae-bce1-4797-a
   - [Adafruit Feather Huzzah](https://www.adafruit.com/product/2821)
   - [Adafruit Feather Non-Latching Relay](https://www.adafruit.com/product/2895)
 
-**Note:** I choose the Feather Huzzah & Raspberry Pi 4 for this product since I already had them and reused them from previous art projects. There are many ways to approach a project like this, but this made sense for me with the materials I already had available.
+**Note:** I chose the Feather Huzzah & Raspberry Pi 4 for this product since I already had them and reused them from previous art projects. There are many ways to approach a project like this, but this made sense for me with the materials I already had available.
 
 
 ## How it works:
